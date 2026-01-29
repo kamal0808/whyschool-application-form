@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhySchool Founding Team — Marketing Application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .logo {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #6366f1;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            color: #a1a1aa;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .form-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+        }
+        
+        .section-title {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #6366f1;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 28px;
+        }
+        
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #e4e4e7;
+            font-size: 0.95rem;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #ef4444;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.08);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #52525b;
+        }
+        
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+        
+        .question-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .question-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .question-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 8px;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+        
+        .question-text {
+            font-size: 1.05rem;
+            color: #e4e4e7;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px 32px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+        
+        .success-message h2 {
+            color: #22c55e;
+            margin-bottom: 16px;
+        }
+        
+        .success-message p {
+            color: #a1a1aa;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: none;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 40px 16px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-section {
+                padding: 24px;
+            }
+            
+            .question-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">WhySchool</div>
+            <h1>Founding Team — Marketing Application</h1>
+            <p class="description">We're looking for builders, not job-seekers. This isn't about your resume — it's about who you are, what you believe, and whether you're ready to build something that matters.</p>
+        </header>
+        
+        <form id="applicationForm">
+            <div class="form-section">
+                <div class="section-title">Basic Information</div>
+                
+                <div class="form-group">
+                    <label for="fullName" class="required">Full Name</label>
+                    <input type="text" id="fullName" name="full_name" required placeholder="Your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="required">Phone</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">Tell Us About You</div>
+                
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <p class="question-text">Send us one piece of content you made that you're genuinely proud of — even if it flopped. Tell us why you made it and what it taught you.</p>
+                    <textarea name="q1_content_proud_of" placeholder="Share your work and story..."></textarea>
+                </div>
+                
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <p class="question-text">Tell us about a time you kept pushing on something when everyone around you thought you should quit. What made you stay?</p>
+                    <textarea name="q2_kept_pushing" placeholder="What kept you going?"></textarea>
+                </div>
+                
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <p class="question-text">What's broken about how young people are educated today — and why does that make you angry?</p>
+                    <textarea name="q3_whats_broken" placeholder="What needs to change?"></textarea>
+                </div>
+                
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <p class="question-text">Describe a project where you had to subordinate your own idea because someone else's was better. How did that feel?</p>
+                    <textarea name="q4_subordinate_idea" placeholder="Tell us about that experience..."></textarea>
+                </div>
+                
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <p class="question-text">Startups are chaos. There's no playbook, roles blur, and things break constantly. Tell us about a time you did something that "wasn't your job" because it needed to get done.</p>
+                    <textarea name="q5_not_your_job" placeholder="What did you step up to do?"></textarea>
+                </div>
+                
+                <div class="question-card">
+                    <div class="question-number">6</div>
+                    <p class="question-text">It's 2030. WhySchool has succeeded beyond our wildest dreams. What does the world look like? What did we change?</p>
+                    <textarea name="q6_2030_vision" placeholder="Paint us a picture of success..."></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+            <p class="error-message" id="errorMessage"></p>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">🎉</div>
+            <h2>Application Submitted!</h2>
+            <p>Thank you for applying to join the WhySchool founding team. We'll be in touch soon.</p>
+        </div>
+    </div>
+    
+    <script>
+        const SUPABASE_URL = 'https://lpyjpgxbvutrtqnaqcex.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxweWpwZ3hidnV0cnRxbmFxY2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjMxMjQ5MjksImV4cCI6MjAzODcwMDkyOX0.wM1tfYfZr_5TyXbj18bjNnR9AUMjDuJjNjLxzK4nR2w';
+        
+        document.getElementById('applicationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            const form = document.getElementById('applicationForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            errorMessage.style.display = 'none';
+            
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            try {
+                const response = await fetch(SUPABASE_URL + '/rest/v1/whyschool_applications', {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Failed to submit');
+                }
+            } catch (error) {
+                errorMessage.textContent = 'Error: ' + error.message;
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+            }
+        });
+    </script>
+</body>
+</html>
